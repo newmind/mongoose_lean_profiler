@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.4.3",
-    "mongoose-lean-virtuals": "^0.3.4"
+    "mongoose": "^5.13.14",
+    "mongoose-lean-virtuals": "^0.3.5"
   }
 }

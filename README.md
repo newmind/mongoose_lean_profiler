@@ -74,7 +74,45 @@ npm install
 ```
 
 ```sh
-node --max-old-space-size=4096 src/index.js
+node --max-old-space-size=8096 src/index.js
+```
+result :
+```log
+connected to mongoDB
+Limit: 100000    Lean: true      Took: 1114
+Limit: 100000    Lean: {"virtuals":true}         Took: 1207
+Limit: 100000    Lean: false     Took: 4952
+Limit: 100000    Lean: true      Took: 1059
+Limit: 100000    Lean: {"virtuals":true}         Took: 1152
+Limit: 100000    Lean: false     Took: 5076
+Limit: 100000    Lean: true      Took: 1043
+Limit: 100000    Lean: {"virtuals":true}         Took: 1160
+Limit: 100000    Lean: false     Took: 4864
+Limit: 100000    Lean: true      Took: 1029
+Limit: 100000    Lean: {"virtuals":true}         Took: 1212
+Limit: 100000    Lean: false     Took: 4821
+Limit: 100000    Lean: true      Took: 1049
+Limit: 100000    Lean: {"virtuals":true}         Took: 1159
+Limit: 100000    Lean: false     Took: 4882
+Limit: 100000    Lean: true      Took: 1018
+Limit: 100000    Lean: {"virtuals":true}         Took: 1134
+Limit: 100000    Lean: false     Took: 4772
+Limit: 100000    Lean: true      Took: 1065
+Limit: 100000    Lean: {"virtuals":true}         Took: 1158
+Limit: 100000    Lean: false     Took: 4946
+Limit: 100000    Lean: true      Took: 1028
+Limit: 100000    Lean: {"virtuals":true}         Took: 1157
+Limit: 100000    Lean: false     Took: 4787
+Limit: 100000    Lean: true      Took: 1032
+Limit: 100000    Lean: {"virtuals":true}         Took: 1167
+Limit: 100000    Lean: false     Took: 4969
+Limit: 100000    Lean: true      Took: 1040
+Limit: 100000    Lean: {"virtuals":true}         Took: 1171
+Limit: 100000    Lean: false     Took: 4829
+
+    Average Runtime With Lean Mode On: 1047.7 
+    Average Runtime With Lean Mode On with Virtuals: 1167.7 
+    Average Runtime With Lean Mode Off: 4889.8
 ```
 
 ## Results

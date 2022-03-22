@@ -14,9 +14,11 @@ const titleSchema = new Schema({
     primaryTitle: String,
     tconst: String, 
     titleType: String
-}, {
-    collection: 'title_basic'
-});
+}
+// , {
+//     collection: 'title_basic'
+// }
+);
 
 titleSchema.virtual('isLong').get(function() {
     return this.runtimeMinutes ? this.runtimeMinutes > 30 : null;
