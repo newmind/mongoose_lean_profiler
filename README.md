@@ -2,7 +2,7 @@
 
 ## Purposes
 
-This script is to profile the performance impact when `mongoose-virtuals-lean` is applied.
+This script is to profile the performance impact when `mongoose-virtuals-lean` or `mongoose-lean-defaults` is applied.
 
 ## What it does?
 
@@ -10,14 +10,15 @@ This script run profiles the `find()` operation with different lean mode:
 
 * Lean mode on
 * Lean mode on with virtuals (This is of our interest!)
+* Lean mode on with defaults (This is of our interest!)
 * Lean mode off
 
 ## Preparing the Environment
 
 What do we need?
 
-* MongoDB (I'm using v4.0.5)
-* Node (I'm using v8.15.0)
+* MongoDB (I'm using v5.0.6)
+* Node (I'm using v14.17.0)
 * Dependencies defined in package.json
 
 ### Step 1: Download IMDB Dataset
@@ -79,40 +80,51 @@ node --max-old-space-size=8096 src/index.js
 result :
 ```log
 connected to mongoDB
-Limit: 100000    Lean: true      Took: 1114
-Limit: 100000    Lean: {"virtuals":true}         Took: 1207
-Limit: 100000    Lean: false     Took: 4952
-Limit: 100000    Lean: true      Took: 1059
-Limit: 100000    Lean: {"virtuals":true}         Took: 1152
-Limit: 100000    Lean: false     Took: 5076
-Limit: 100000    Lean: true      Took: 1043
-Limit: 100000    Lean: {"virtuals":true}         Took: 1160
-Limit: 100000    Lean: false     Took: 4864
-Limit: 100000    Lean: true      Took: 1029
-Limit: 100000    Lean: {"virtuals":true}         Took: 1212
-Limit: 100000    Lean: false     Took: 4821
-Limit: 100000    Lean: true      Took: 1049
+Limit: 100000    Lean: true      Took: 1150
+Limit: 100000    Lean: {"virtuals":true}         Took: 1190
+Limit: 100000    Lean: {"defaults":true}         Took: 1187
+Limit: 100000    Lean: false     Took: 5084
+Limit: 100000    Lean: true      Took: 1098
+Limit: 100000    Lean: {"virtuals":true}         Took: 1305
+Limit: 100000    Lean: {"defaults":true}         Took: 1234
+Limit: 100000    Lean: false     Took: 5230
+Limit: 100000    Lean: true      Took: 1073
+Limit: 100000    Lean: {"virtuals":true}         Took: 1246
+Limit: 100000    Lean: {"defaults":true}         Took: 1222
+Limit: 100000    Lean: false     Took: 5092
+Limit: 100000    Lean: true      Took: 1063
 Limit: 100000    Lean: {"virtuals":true}         Took: 1159
-Limit: 100000    Lean: false     Took: 4882
-Limit: 100000    Lean: true      Took: 1018
-Limit: 100000    Lean: {"virtuals":true}         Took: 1134
-Limit: 100000    Lean: false     Took: 4772
-Limit: 100000    Lean: true      Took: 1065
-Limit: 100000    Lean: {"virtuals":true}         Took: 1158
-Limit: 100000    Lean: false     Took: 4946
-Limit: 100000    Lean: true      Took: 1028
-Limit: 100000    Lean: {"virtuals":true}         Took: 1157
-Limit: 100000    Lean: false     Took: 4787
-Limit: 100000    Lean: true      Took: 1032
-Limit: 100000    Lean: {"virtuals":true}         Took: 1167
-Limit: 100000    Lean: false     Took: 4969
-Limit: 100000    Lean: true      Took: 1040
-Limit: 100000    Lean: {"virtuals":true}         Took: 1171
-Limit: 100000    Lean: false     Took: 4829
+Limit: 100000    Lean: {"defaults":true}         Took: 1177
+Limit: 100000    Lean: false     Took: 5106
+Limit: 100000    Lean: true      Took: 1084
+Limit: 100000    Lean: {"virtuals":true}         Took: 1160
+Limit: 100000    Lean: {"defaults":true}         Took: 1447
+Limit: 100000    Lean: false     Took: 5053
+Limit: 100000    Lean: true      Took: 1031
+Limit: 100000    Lean: {"virtuals":true}         Took: 1168
+Limit: 100000    Lean: {"defaults":true}         Took: 1186
+Limit: 100000    Lean: false     Took: 5025
+Limit: 100000    Lean: true      Took: 1019
+Limit: 100000    Lean: {"virtuals":true}         Took: 1143
+Limit: 100000    Lean: {"defaults":true}         Took: 1174
+Limit: 100000    Lean: false     Took: 5075
+Limit: 100000    Lean: true      Took: 1037
+Limit: 100000    Lean: {"virtuals":true}         Took: 1169
+Limit: 100000    Lean: {"defaults":true}         Took: 1203
+Limit: 100000    Lean: false     Took: 5227
+Limit: 100000    Lean: true      Took: 1052
+Limit: 100000    Lean: {"virtuals":true}         Took: 1151
+Limit: 100000    Lean: {"defaults":true}         Took: 1153
+Limit: 100000    Lean: false     Took: 5075
+Limit: 100000    Lean: true      Took: 1039
+Limit: 100000    Lean: {"virtuals":true}         Took: 1149
+Limit: 100000    Lean: {"defaults":true}         Took: 1148
+Limit: 100000    Lean: false     Took: 5017
 
-    Average Runtime With Lean Mode On: 1047.7 
-    Average Runtime With Lean Mode On with Virtuals: 1167.7 
-    Average Runtime With Lean Mode Off: 4889.8
+    Average Runtime With Lean Mode On: 1064.6 
+    Average Runtime With Lean Mode On with Virtuals: 1184 
+    Average Runtime With Lean Mode On with Defaults: 1213.1 
+    Average Runtime With Lean Mode Off: 5098.4
 ```
 
 ## Results

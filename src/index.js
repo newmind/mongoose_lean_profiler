@@ -33,9 +33,15 @@ async function runProfiler(numberOfTimes, limit) {
   for (let i = 1; i <= numberOfTimes; i++) {
     const leanModeOn = await runQuery(limit, true);
     const leanModeOnWithVirtuals = await runQuery(limit, { virtuals: true });
+    const leanModeOnWithDefaults = await runQuery(limit, { defaults: true });
     const leanModeOff = await runQuery(limit, false);
 
-    results.push([leanModeOn, leanModeOnWithVirtuals, leanModeOff]);
+    results.push([
+      leanModeOn,
+      leanModeOnWithVirtuals,
+      leanModeOnWithDefaults,
+      leanModeOff,
+    ]);
   }
 
   const sum = function (acc, x) {
@@ -53,16 +59,23 @@ async function runProfiler(numberOfTimes, limit) {
         return x[1];
       })
       .reduce(sum) / results.length;
-  const leanModeOffAverage =
+  const leanModeOnWithDefaultsAverage =
     results
       .map(function (x) {
         return x[2];
+      })
+      .reduce(sum) / results.length;
+  const leanModeOffAverage =
+    results
+      .map(function (x) {
+        return x[3];
       })
       .reduce(sum) / results.length;
 
   console.log(`
     Average Runtime With Lean Mode On: ${leanModeOnAverage} 
     Average Runtime With Lean Mode On with Virtuals: ${leanModeOnWithVirtualsAverage} 
+    Average Runtime With Lean Mode On with Defaults: ${leanModeOnWithDefaultsAverage} 
     Average Runtime With Lean Mode Off: ${leanModeOffAverage}`);
 }
 

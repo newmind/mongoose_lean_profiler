@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "mongoose": "^5.13.14",
+    "mongoose-lean-defaults": "^2.1.0",
     "mongoose-lean-virtuals": "^0.3.5"
   }
 }
