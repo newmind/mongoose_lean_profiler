@@ -49,7 +49,8 @@ docker exec -it <container id> bash
 We then import the dataset into our MongoDB instance.
 
 ```sh
-mongoimport -u root -p root --authenticationDatabase admin --type tsv --headerline --db imdb --file ./title_basic.tsv
+cd data/imdb
+mongoimport -u root -p root --authenticationDatabase admin --type tsv --headerline --db imdb --file ./title.basics.tsv
 ```
 
 Try connecting to your MongoDB and see if the data are successfully imported.
